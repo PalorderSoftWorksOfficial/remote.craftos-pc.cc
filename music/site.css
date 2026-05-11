@@ -1,108 +1,142 @@
+:root {
+    --bg: #0f1115;
+    --panel: #161a22;
+    --panel-2: #1c2230;
+    --text: #e6e6e6;
+    --muted: #9aa4b2;
+    --accent: #4ea1ff;
+    --border: #2a3344;
+}
+
 body {
-    padding: 0;
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: radial-gradient(circle at top, #151b26, var(--bg));
+    color: var(--text);
 }
 
-a {
-    text-decoration: none;
-    font-weight: bold;
-    color: #666666;
-}
-
-.header {
-    width: calc(100% - 10px);
-    height: 80px;
-    display: flex;
-    flex-direction: row-reverse;
-    padding-right: 10px;
-    align-items: center;
-}
-
-.footer {
-    width: calc(100% - 10px);
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-left: 10px;
-    background-color: #dddddd;
-}
-
-.header > *, .footer > * {
-    padding: 10px;
-}
-
-.main {
-    width: calc(100% - 40px);
-    height: calc(100vh - 170px);
+/* Layout */
+.app {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    justify-content: center;
-    align-items: center;
-    margin-top: -50px;
-    margin-bottom: 50px;
 }
 
-#dropped-files-outer {
-    background-color: #dddddd;
-    border-style: solid;
-    border-radius: 10px;
-    border-width: 2px;
-    border-color: #999999;
-    width: 75%;
+/* Top bar */
+.topbar {
+    height: 64px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    padding: 0 20px;
+    background: rgba(22, 26, 34, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Main */
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.hero p {
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+/* Dropzone */
+.dropzone {
+    border: 2px dashed var(--border);
+    border-radius: 16px;
+    background: var(--panel);
+    padding: 50px;
+    text-align: center;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.dropzone:hover {
+    border-color: var(--accent);
+    background: var(--panel-2);
+    transform: translateY(-2px);
+}
+
+.dropzone-inner i {
+    font-size: 40px;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.dropzone-inner h2 {
+    margin: 10px 0 5px;
+}
+
+.dropzone-inner p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* File input hidden */
+#drop-files-button {
+    display: none;
+}
+
+/* File list container */
+#dropped-files-outer {
+    margin-top: 25px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    min-height: 80px;
+}
+
+/* Empty state */
+.empty-state {
+    color: var(--muted);
+    text-align: center;
+    margin: 0;
 }
 
 #dropped-files {
-    background-color: #dddddd;
-    border-style: none;
-    border-radius: 10px;
-    border-width: 2px;
-    border-color: #999999;
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;
 }
 
 #dropped-files td {
-    border-style: solid;
-    border-width: 2px;
-    border-color: #999999;
-    border-collapse: collapse;
-    padding: 5px;
-    height: 32px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-    white-space: nowrap;
+    padding: 10px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
 }
 
-#dropped-files td:first-child {
-    border-left: none;
+#dropped-files tr:hover {
+    background: rgba(78, 161, 255, 0.08);
 }
 
-#dropped-files td:last-child {
-    border-right: none;
-}
-
-#dropped-files tr:first-child td {
-    border-top: none;
-}
-
-#dropped-files tr:last-child td {
-    border-bottom: none;
-}
-
+/* Progress column */
 .dropped-file-percent {
-    text-align: center;
-    width: 50px !important;
-    max-width: 50px;
-    min-width: 50px;
-    white-space: initial !important;
-    word-wrap: initial !important;
-    overflow: initial !important;
+    width: 80px;
+    text-align: right;
+    color: var(--accent);
 }

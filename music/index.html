@@ -1,19 +1,60 @@
-<html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="site.css" type="text/css">
-        <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
-        <title>DFPWM Conversion &amp; File Transfer</title>
-        <script src="index.js"></script>
-    </head>
-    <body>
-        <div class="main" ondrop="dropFile(event)" ondragover="dragOver(event)" ondragleave="dragEnd(event)">
-            <h1>DFPWM Conversion &amp; File Transfer</h1>
-            <p class="drop-description">Drop any MP3, OGG, M4A, WAV, AIFF, FLAC, WMA, instantly get a DFPWM link<br>Files are kept for 10 minutes, then deleted</p>
-            <div id="dropped-files-outer">
-                <h3 style="color: #999999"><i class="fas fa-upload"></i> Drop files here</h3>
-            </div>
-            <input type="file" id="drop-files-button" oninput="dropFileButton(event)">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DFPWM Converter & File Transfer</title>
+
+    <link rel="stylesheet" href="site.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+
+    <script src="index.js" defer></script>
+</head>
+
+<body>
+
+<div class="app">
+
+    <header class="topbar">
+        <div class="brand">
+            <i class="fas fa-wave-square"></i>
+            <span>DFPWM Converter</span>
         </div>
-    </body>
+    </header>
+
+    <main class="container">
+
+        <section class="hero">
+            <h1>File → DFPWM Conversion</h1>
+            <p>Drop audio files and receive a temporary download link (10 min retention)</p>
+        </section>
+
+        <section class="dropzone"
+                 ondrop="dropFile(event)"
+                 ondragover="dragOver(event)"
+                 ondragleave="dragEnd(event)">
+
+            <div class="dropzone-inner">
+                <i class="fas fa-upload"></i>
+                <h2>Drag & Drop Files</h2>
+                <p>MP3 • OGG • WAV • FLAC • M4A • WMA</p>
+            </div>
+
+        </section>
+
+        <input type="file" id="drop-files-button" oninput="dropFileButton(event)">
+
+        <section id="dropped-files-outer">
+            <h3 class="empty-state">
+                <i class="fas fa-inbox"></i>
+                Waiting for uploads
+            </h3>
+        </section>
+
+    </main>
+
+</div>
+
+</body>
 </html>
