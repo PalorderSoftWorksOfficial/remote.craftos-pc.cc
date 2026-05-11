@@ -30,7 +30,7 @@ export = function(url: string, isSecure: boolean): express.Router {
     route.get('/index.js', (req, res) => {res.set("Content-Type", "application/javascript"); res.send(getCachedFile("index.js").replace(/\$URL_PLACEHOLDER/g, (isSecure ? "https://" : "http://") + req.hostname + url));});
     route.get('/site.css', (req, res) => {res.set("Content-Type", "text/css"); res.send(getCachedFile("site.css"));});
 
-    route.use('/upload', express.raw({limit: "25MB", inflate: false, type: "*/*"}));
+    route.use('/upload', express.raw({inflate: false, type: "*/*"}));
     route.post("/upload", (req, res) => {
         let binstr = "";
         for (let i = 0; i < 6; i++) binstr += String.fromCharCode(Math.random() * 255);
